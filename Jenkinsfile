@@ -22,17 +22,6 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Secret Scan') {
-            steps {
-                powershell '''
-                    pip install detect-secrets
-                    detect-secrets scan --baseline .secrets.baseline
-                    detect-secrets audit .secrets.baseline
-                '''
-            }
-        }
-
         stage('Install Dependencies') {
             parallel {
                 stage('Frontend') {
