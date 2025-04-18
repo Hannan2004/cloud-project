@@ -63,7 +63,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = selectedTask ? `https://task-manager-backend-470119455745.us-central1.run.app/api/tasks/${selectedTask._id}` : `${backendUrl}/api/tasks`;
+      const url = selectedTask ? `https://task-manager-backend-470119455745.us-central1.run.app/api/tasks/${selectedTask._id}` : `https://task-manager-backend-470119455745.us-central1.run.app/api/tasks`;
       const method = selectedTask ? 'PUT' : 'POST';
       
       const response = await fetch(url, {
