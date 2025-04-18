@@ -8,7 +8,7 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
+    origin: 'https://task-manager-frontend-470119455745.us-central1.run.app/', // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies if needed
 };
@@ -18,6 +18,5 @@ app.use(bodyParser.json());
 
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
-const backendUrl = ''
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
