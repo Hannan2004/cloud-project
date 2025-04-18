@@ -44,6 +44,6 @@ This project showcases a fully automated **CI/CD pipeline** for a full-stack web
 
 For a complete step-by-step walkthrough of the project setup and CI/CD pipeline automation process, refer to the detailed guide below:
 
-👉 [View the Full Cookbook Guide](https://docs.google.com/document/d/1G8cH59gm4INioAzaP1_qwcYMTdW5oERHmsr1M_F0tiw/edit?usp=sharing) 
+👉 [View the Full Cookbook Guide](https://drive.google.com/file/d/14_yNaARl521Qu_Yp0UxEn_yYJ8CIm1vt/view?usp=drive_link) 
 
 ---
