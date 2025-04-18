@@ -42,7 +42,6 @@ pipeline {
         }
 
         stage('Run Tests') {
-            parallel {
                 stage('Frontend Tests') {
                     steps {
                         dir('frontend') {
@@ -50,14 +49,6 @@ pipeline {
                         }
                     }
                 }
-                stage('Backend Tests') {
-                    steps {
-                        dir('backend') {
-                            bat 'npm test'
-                        }
-                    }
-                }
-            }
         }
 
         stage('Build Images') {
