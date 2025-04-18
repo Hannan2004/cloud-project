@@ -91,18 +91,6 @@ pipeline {
                     powershell '''
                         $env:GOOGLE_APPLICATION_CREDENTIALS = $env:GCP_KEY
 
-                        # Deploy frontend
-                        gcloud run deploy task-manager-frontend `
-                          --image=${env:ARTIFACT_REGISTRY}/${env:REGISTRY_PATH}/${env:FRONTEND_IMAGE}:${env:VERSION} `
-                          --platform=managed `
-                          --region=${env:REGION} `
-                          --allow-unauthenticated `
-                          --port=80
-
-                        # Get frontend URL
-                        $frontendUrl = gcloud run services describe task-manager-frontend --platform=managed --region=${env:REGION} --format='value(status.url)'
-
-                        # Deploy backend with frontend URL
                         gcloud run deploy task-manager-backend `
                           --image=${env:ARTIFACT_REGISTRY}/${env:REGISTRY_PATH}/${env:BACKEND_IMAGE}:${env:VERSION} `
                           --platform=managed `
@@ -110,7 +98,17 @@ pipeline {
                           --allow-unauthenticated `
                           --set-env-vars="MONGODB_URI=${env:MONGODB_URI}" `
                           --set-env-vars="NODE_ENV=production" `
-                          --set-env-vars="FRONTEND_URL=$frontendUrl"
+
+                        $backendUrl = gcloud run services describe task-manager-backend --platform=managed --region=${env:REGION} --format='value(status.url)' 
+                        # Deploy frontend
+
+                        gcloud run deploy task-manager-frontend `
+                          --image=${env:ARTIFACT_REGISTRY}/${env:REGISTRY_PATH}/${env:FRONTEND_IMAGE}:${env:VERSION} `
+                          --platform=managed `
+                          --region=${env:REGION} `
+                          --allow-unauthenticated `
+                          --port=80
+                          --set-env-vars="REACT_APP_API_URL=$backendUrl
                     '''
                 }
             }
