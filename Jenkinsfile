@@ -46,8 +46,8 @@ pipeline {
                     powershell '''
                         $env:GOOGLE_APPLICATION_CREDENTIALS = $env:GCP_KEY
                         gcloud auth activate-service-account --key-file=$env:GCP_KEY
-                        gcloud config set project ${PROJECT_ID}
-                        gcloud auth configure-docker ${ARTIFACT_REGISTRY} --quiet
+                        gcloud config set project $env:PROJECT_ID
+                        gcloud auth configure-docker $env:ARTIFACT_REGISTRY --quiet
                     '''
 
                     dir('frontend') {
