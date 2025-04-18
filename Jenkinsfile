@@ -101,14 +101,13 @@ pipeline {
 
                         $backendUrl = gcloud run services describe task-manager-backend --platform=managed --region=${env:REGION} --format='value(status.url)' 
                         # Deploy frontend
-
                         gcloud run deploy task-manager-frontend `
                           --image=${env:ARTIFACT_REGISTRY}/${env:REGISTRY_PATH}/${env:FRONTEND_IMAGE}:${env:VERSION} `
                           --platform=managed `
                           --region=${env:REGION} `
                           --allow-unauthenticated `
-                          --port=80
-                          --set-env-vars="REACT_APP_API_URL=$backendUrl
+                          --port=80 `
+                          --set-env-vars="REACT_APP_API_URL=$backendUrl"
                     '''
                 }
             }
