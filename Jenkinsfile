@@ -97,8 +97,8 @@ pipeline {
                           --platform=managed `
                           --region=${env:REGION} `
                           --allow-unauthenticated `
-                          --port=8080 
-                          
+                          --port=80
+
                         # Get frontend URL
                         $frontendUrl = gcloud run services describe task-manager-frontend --platform=managed --region=${env:REGION} --format='value(status.url)'
 

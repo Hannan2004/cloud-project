@@ -8,7 +8,7 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost', // Replace with your frontend URL
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies if needed
 };
