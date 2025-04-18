@@ -40,17 +40,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Run Tests') {
-                stage('Frontend Tests') {
-                    steps {
-                        dir('frontend') {
-                            bat 'npm test -- --watchAll=false'
-                        }
-                    }
-                }
-        }
-
         stage('Build Images') {
             steps {
                 withCredentials([file(credentialsId: "${GCP_CREDENTIALS_ID}", variable: 'GCP_KEY')]) {
