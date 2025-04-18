@@ -96,8 +96,9 @@ pipeline {
                           --image=${env:ARTIFACT_REGISTRY}/${env:REGISTRY_PATH}/${env:FRONTEND_IMAGE}:${env:VERSION} `
                           --platform=managed `
                           --region=${env:REGION} `
-                          --allow-unauthenticated
-
+                          --allow-unauthenticated `
+                          --port=8080 
+                          
                         # Get frontend URL
                         $frontendUrl = gcloud run services describe task-manager-frontend --platform=managed --region=${env:REGION} --format='value(status.url)'
 
