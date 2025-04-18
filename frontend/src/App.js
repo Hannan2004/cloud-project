@@ -17,12 +17,10 @@ function App() {
     category: ''
   });
 
-  const backendUrl = process.env.REACT_APP_API_URL
-
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${backendUrl}/api/tasks`);
+      const response = await fetch(`https://task-manager-backend-470119455745.us-central1.run.app/api/tasks`);
       if (!response.ok) {
         throw new Error('Failed to fetch tasks');
       }
@@ -65,7 +63,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = selectedTask ? `${backendUrl}/api/tasks/${selectedTask._id}` : `${backendUrl}/api/tasks`;
+      const url = selectedTask ? `https://task-manager-backend-470119455745.us-central1.run.app/api/tasks/${selectedTask._id}` : `${backendUrl}/api/tasks`;
       const method = selectedTask ? 'PUT' : 'POST';
       
       const response = await fetch(url, {
@@ -106,7 +104,7 @@ function App() {
   const handleDeleteTask = async (id) => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       try {
-        const response = await fetch(`${backendUrl}/api/tasks/${id}`, {
+        const response = await fetch(`https://task-manager-backend-470119455745.us-central1.run.app/api/tasks/${id}`, {
           method: 'DELETE'
         });
 
