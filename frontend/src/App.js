@@ -160,7 +160,7 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Task Manager</h1>
+        <h1>Task Manager Platform</h1>
         <button className="add-btn" onClick={() => {
           resetForm();
           setShowTaskForm(true);
